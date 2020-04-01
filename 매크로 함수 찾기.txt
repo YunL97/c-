@@ -1,0 +1,137 @@
+IntPtr findwindow = FindWindow(null, AppPlayerName);
+            if (findwindow != IntPtr.Zero)
+            {
+
+                if (!threadexit)
+                {
+                    threadexit = true;
+                    t1.Join();
+
+
+                }
+                //플레이어를 찾았을 경우
+                // Debug.WriteLine("앱플레이어 찾았습니다.");
+
+                //찾은 플레이어를 바탕으로 Graphics 정보를 가져옵니다.
+                Graphicsdata = Graphics.FromHwnd(findwindow);
+
+                //찾은 플레이어 창 크기 및 위치를 가져옵니다. 
+                rect = Rectangle.Round(Graphicsdata.VisibleClipBounds);
+
+                //플레이어 창 크기 만큼의 비트맵을 선언해줍니다.
+                bmp = new Bitmap(rect.Width, rect.Height);
+
+                //비트맵을 바탕으로 그래픽스 함수로 선언해줍니다.
+
+                using (Graphics g = Graphics.FromImage(bmp))
+                {
+                    //찾은 플레이어의 크기만큼 화면을 캡쳐합니다.
+                    IntPtr hdc = g.GetHdc();
+                    PrintWindow(findwindow, hdc, 0x2);
+                    g.ReleaseHdc(hdc);
+                }
+
+                // pictureBox1 이미지를 표시해줍니다.
+                //pictureBox1.Image = bmp;
+
+
+                
+                    if (regionreset == true)
+                {
+                    searchIMG(bmp, regionreset_Img, 14);
+                    if (region)
+                    {
+                        InClick(94, 135);
+                        Thread.Sleep(300);
+                        InClick(80, 336);
+                        Thread.Sleep(300);
+                        InClick(1173, 291);
+                        Thread.Sleep(300);
+                        InClick(1184, 381);
+                        Thread.Sleep(300);
+                        InClick(1233, 39);
+                        Thread.Sleep(300);
+                    }
+                    searchIMG(bmp, ok_Img, 0);
+                    searchIMG(bmp, regionreward1_Img, 21);
+
+                }
+                if(regionfalse)
+                if(hunt == true)
+                {
+                    searchIMG(bmp, ok2_Img, 9);
+                    searchIMG(bmp, x1_Img, 4);
+                    searchIMG(bmp, x2_Img, 5);
+                    searchIMG(bmp, x3_Img, 11);
+                }
+
+                if (outbreak == true)
+                {
+                    searchIMG(bmp, outbreak_Img, 10);
+                }
+
+                if (regionfalse)
+                    if (mainquest == true)
+                {
+
+                    searchIMG(bmp, ok_Img, 0);
+                    searchIMG(bmp, ok2_Img, 9);
+                    searchIMG(bmp, ok3_Img, 18);
+                    if (regioncount == true)
+                    {
+                        //searchIMG(bmp, regionreward_Img, 13);
+                    }
+                    searchIMG(bmp, reward_Img, 2);
+                    searchIMG(bmp, skip_Img, 1);
+                   // if (mainbar == true)
+                    //{
+                       
+                    // }
+                    // else
+                    //   mainbar = true;
+
+                    searchIMG(bmp, regionquest_Img, 16);
+                    if (regioncount == true)
+                    {
+                        
+                        searchIMG(bmp, regionreset_Img, 14);
+                    }
+                    searchIMG(bmp, x1_Img, 4);
+                    searchIMG(bmp, x2_Img, 5);
+                    searchIMG(bmp, x3_Img, 11);
+                    searchIMG(bmp, tutorial_Img, 7);
+                    searchIMG(bmp, tutorial2_Img, 8);
+                    searchIMG(bmp, main_Img, 6);
+
+                }
+                //searchIMG(bmp, buy_Img, 17); 구광고 구매하기
+                if (a3start == true)
+                {
+                    if (a3count > 300)
+                    {
+                        searchIMG(bmp, a3_Img, 19);
+                        searchIMG(bmp, x4_Img, 20);
+                        a3count = 0;
+
+                    }
+                }
+                a3count++;
+                bmp.Dispose();
+                main();
+            }
+            else
+            {
+                //플레이어를 못찾을경우
+                Debug.WriteLine("못찾았어요");
+            }
+        }
+
+
+
+
+        public void function(object sender, EventArgs e)
+        {
+
+            //  button1.PerformClick();
+
+        }
