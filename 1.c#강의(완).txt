@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks; //보따리
+
+namespace HelloSharp //namespace -> 보따리를 만드는것
+{
+    class Program
+    {
+        static void Main(string[] args) //메인 함수 말고는 os가 호출못함 ,string[] = 변수의타입스티링이 여러개 들어간다는뜻
+                                        //들어오는것은 args로 들어옴 args는 여러개의  string를 갖고 있음
+        {
+            Console.WriteLine("hello c#"); //콘솔이라는 도화지에 그려라
+            //Console.WriteLine(args.Length); //0이뜸 인자가 0개라는뜻
+            Console.WriteLine("hello "+args[0]);
+
+            Console.ReadKey(); //  키를 누를때까지 대기 
+
+            
+        }
+    }
+}//17:18
